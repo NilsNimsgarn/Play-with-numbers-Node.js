@@ -1,0 +1,28 @@
+process.stdin.resume();
+process.stdin.setEncoding("utf-8");
+var stdin_input = "";
+process.stdin.on("data", function (input) {stdin_input += input;});
+process.stdin.on("end", function () {main(stdin_input);});
+
+function main(input)
+{
+    var line = input.split("\n"); 
+    var tests = line[0].substring(3,1);
+    var array = line[1].split(" ");
+    
+    for (var x = 0; x < tests ; x++)
+    {
+        var test = line[x + 2];
+        var z1 = test.split(" ")[0];
+        var z2 = test.split(" ")[1];
+        var erg = 0;
+        
+        for (var y = z1; y <= z2; y++)
+        {
+            erg += Number(array[y-1]);
+        }
+        
+        erg = Math.floor(erg / (z2 - z1 + 1));
+        console.log(erg);
+    }
+}
